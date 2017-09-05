@@ -76,14 +76,14 @@ function _commandSync(commandMsg) {
 	let addr = new Gio.UnixSocketAddress({address_type: Gio.UnixSocketAddressType.ABSTRACT, path: 'oz-control'});
 	sockClient = new Gio.SocketClient({family: Gio.SocketFamily.UNIX, timeout: 2});
 
-	let sockConnection = sockClient.connect(addr, null);
+	sockConnection = sockClient.connect(addr, null);
 
 	//let inStr = new Gio.DataInputStream({ base_stream: sockConnection.get_input_stream() });
 	//output_reader = new Gio.DataInputStream({ base_stream: inStr });
-	let output_reader = new Gio.DataInputStream({ base_stream: sockConnection.get_input_stream() });
+	output_reader = new Gio.DataInputStream({ base_stream: sockConnection.get_input_stream() });
 	output_reader.set_byte_order(Gio.DataStreamByteOrder.BIG_ENDIAN);
 
-	let output_writer = new Gio.DataOutputStream({ base_stream: sockConnection.get_output_stream() });
+	output_writer = new Gio.DataOutputStream({ base_stream: sockConnection.get_output_stream() });
 	output_writer.set_byte_order(Gio.DataStreamByteOrder.BIG_ENDIAN);
 	output_writer.put_uint32(commandMsg.length, null);
 	output_writer.write(commandMsg, null);

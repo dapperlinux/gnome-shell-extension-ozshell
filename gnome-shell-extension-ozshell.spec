@@ -1,6 +1,6 @@
 Name:       gnome-shell-extension-ozshell
-Version:    3.22
-Release:    1
+Version:    3.24
+Release:    2
 Summary:    Gnome shell extension to interface the oz sandboxing framework
 URL:        https://github.com/subgraph/gnome-shell-extension-ozshell
 License:    GPLv3
@@ -9,7 +9,7 @@ BuildRequires:   glib2-devel
 BuildRequires:   gnome-common
 BuildRequires:   intltool
 BuildRequires:   pkgconfig
-Source0:    %{name}-%{version}.tar.gz
+Source0:    %{name}-%{version}.tar.xz
 
 %description
 This is a Gnome Shell extension for interfacing with the OZ application sandboxing framework.
@@ -37,5 +37,8 @@ rmdir $RPM_BUILD_ROOT/usr/@DATADIRNAME@
 /usr/share/locale/*
 
 %changelog
+* Tue Sep  5 2017 Matthew Ruffell <msr50@uclive.ac.nz>
+- Removing additional let statements, for gnome 3.24
+
 * Wed Dec 14 2016 Matthew Ruffell <msr50@uclive.ac.nz>
 - Initial packaging
